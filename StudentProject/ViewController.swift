@@ -74,6 +74,9 @@ class ViewController: UIViewController {
         let letterLabelY = 10.0
         let sizeSquare = 31.25
         let sizeLabel = 31.25
+        let lettersArray = [LettersAndNumbers(letter: "A"), LettersAndNumbers(letter: "B"), LettersAndNumbers(letter: "C"), LettersAndNumbers(letter: "D"), LettersAndNumbers(letter: "E"), LettersAndNumbers(letter: "F"), LettersAndNumbers(letter: "G"), LettersAndNumbers(letter: "H")]
+        
+        let numbersArray = [LettersAndNumbers(letter: "1"),LettersAndNumbers(letter: "2"),LettersAndNumbers(letter: "3"),LettersAndNumbers(letter: "4"),LettersAndNumbers(letter: "5"),LettersAndNumbers(letter: "6"),LettersAndNumbers(letter: "7"),LettersAndNumbers(letter: "8")]
         
         for indexDown in 1...8 {
             for indexRight in 1...8 {
@@ -90,59 +93,35 @@ class ViewController: UIViewController {
             let lettersLabel = UILabel(frame: CGRect(x: sizeLabel * Double(indexDown) , y: letterLabelY, width: sizeLabel, height: sizeLabel / 2))
             lettersLabel.backgroundColor = .yellow
             boardView.addSubview(lettersLabel)
-            
-            let lettersArray = [Letters(letter: "A"), Letters(letter: "B"), Letters(letter: "C"), Letters(letter: "D"), Letters(letter: "E"), Letters(letter: "F"), Letters(letter: "G"), Letters(letter: "H")]
-            var textLetter = String()
-            textLetter = lettersArray[indexDown - 1].letter
-            lettersLabel.text = textLetter
+            lettersLabel.text = lettersArray[indexDown - 1].letter
             lettersLabel.textAlignment = .center
             
             let numbersLabel = UILabel(frame: CGRect(x: letterLabelX  , y: sizeLabel * Double(indexDown), width: sizeLabel / 2, height: sizeLabel))
             numbersLabel.backgroundColor = .yellow
             boardView.addSubview(numbersLabel)
-            
-            let numbersArray = [Numbers(number: "1"),Numbers(number: "2"),Numbers(number: "3"),Numbers(number: "4"),Numbers(number: "5"),Numbers(number: "6"),Numbers(number: "7"),Numbers(number: "8")]
-            var textNumber = String()
-            textNumber = numbersArray[indexDown - 1].number
-            numbersLabel.text = textNumber
+            numbersLabel.text = numbersArray[indexDown - 1].letter
             numbersLabel.textAlignment = .center
             
             let lettersLabelRight = UILabel(frame: CGRect(x: sizeLabel * Double(indexDown) , y: 285 , width: sizeLabel, height: sizeLabel / 2))
             lettersLabelRight.backgroundColor = .yellow
             boardView.addSubview(lettersLabelRight)
-            
-            let lettersArrayRight = [Letters(letter: "A"), Letters(letter: "B"), Letters(letter: "C"), Letters(letter: "D"), Letters(letter: "E"), Letters(letter: "F"), Letters(letter: "G"), Letters(letter: "H")]
-            var textLetterRight = String()
-            textLetterRight = lettersArrayRight[indexDown - 1].letter
-            lettersLabelRight.text = textLetterRight
+            lettersLabelRight.text = lettersArray[indexDown - 1].letter
             lettersLabelRight.textAlignment = .center
             
             let numbersLabelDown = UILabel(frame: CGRect(x: 285  , y: sizeLabel * Double(indexDown), width: sizeLabel / 2, height: sizeLabel))
             numbersLabelDown.backgroundColor = .yellow
             boardView.addSubview(numbersLabelDown)
-            
-            let numbersArrayDown = [Numbers(number: "1"),Numbers(number: "2"),Numbers(number: "3"),Numbers(number: "4"),Numbers(number: "5"),Numbers(number: "6"),Numbers(number: "7"),Numbers(number: "8")]
-            var textNumberDown = String()
-            textNumberDown = numbersArrayDown[indexDown - 1].number
-            numbersLabelDown.text = textNumberDown
-            numbersLabelDown.textAlignment = .center
+            numbersLabelDown.text = numbersArray[indexDown - 1].letter
+            lettersLabelRight.textAlignment = .center
         }
     }
 }
 
-class Letters {
+class LettersAndNumbers {
     var letter: String
     
     init(letter: String) {
         self.letter = letter
-    }
-}
-
-class Numbers {
-    var number: String
-    
-    init(number: String) {
-        self.number = number
     }
 }
 
