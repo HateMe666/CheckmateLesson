@@ -1,28 +1,16 @@
 //
-//  ViewController.swift
+//  CheckmateBoardConfigurator.swift
 //  StudentProject
 //
-//  Created by Nikita Kuzmich on 8.07.22.
+//  Created by Nikita Kuzmich on 17.07.22.
 //
 
 import UIKit
+import Foundation
 
-class ViewController: UIViewController {
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .green
-        //        addStudents()
-        //        namesArrayLabel()
-        //        viewWithSmallViews()
-        
-        view.addSubview(checkmateBoard(letters: addLettersArray(array: [Symbols]()), numbers: addNumbersArray(array: [Symbols]())))
-    }
-    
+class CheckmateBoardConfigurator {
     func addLettersArray(array: [Symbols]) -> [Symbols] {
-        return [Symbols(value: "A"), Symbols(value: "B"), Symbols(value: "C"), Symbols(value: "D"), Symbols(value: "E"), Symbols(value: "F"), Symbols(value: "G"), Symbols(value: "H"), Symbols(value: "M")]
+        return [Symbols(value: "A"), Symbols(value: "B"), Symbols(value: "C"), Symbols(value: "D"), Symbols(value: "E"), Symbols(value: "F"), Symbols(value: "G"), Symbols(value: "H")]
     }
     
     func addNumbersArray(array: [Symbols]) -> [Symbols] {
@@ -101,55 +89,8 @@ class ViewController: UIViewController {
         }
         return boardView
     }
-    
-    func addStudents() {
-        let label = UILabel(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
-        view.addSubview(label)
-        let studentArray = [Student(name: "Nikita"), Student(name: "Ilya"), Student(name: "Zahar"), Student(name: "Igor")]
-        var textString = String()
-        for student in 0...studentArray.count - 1 {
-            if student != studentArray.count - 1  {
-                textString += studentArray[student].name
-                textString += ", "
-            } else {
-                textString += studentArray[student].name
-                textString += ". "
-            }
-        }
-        label.text = textString
-    }
-    
-    func namesArrayLabel() {
-        let studentArray = [Student(name: "Igor"), Student(name: "Vasya"), Student(name: "Oleg")]
-        var textString = String()
-        for index in 0...studentArray.count - 1 {
-            let label = UILabel(frame: CGRect(x: 100 * index, y: 80, width: 90, height: 40))
-            label.backgroundColor = .white
-            view.addSubview(label)
-            textString = studentArray[index].name
-            label.text = textString
-        }
-    }
-    
-    func viewWithSmallViews() {
-        let bigView = UIView(frame: CGRect(x: 35, y: 150 , width: 250, height: 250))
-        bigView.backgroundColor = .white
-        view.addSubview(bigView)
-        var x = 0
-        var y = 0
-        for _ in 1...2 {
-            for _ in 1...2 {
-                let smallView = UIView(frame: CGRect(x: x, y: y, width: 125, height: 125))
-                smallView.backgroundColor = .gray
-                bigView.addSubview(smallView)
-                x = 125
-            }
-            x = 0
-            y = 125
-        }
-    }
-    
 }
+
 
 class Symbols {
     var value: String
@@ -158,19 +99,3 @@ class Symbols {
         self.value = value
     }
 }
-
-
-
-class Student {
-    var name: String
-    
-    init(name: String) {
-        self.name = name
-    }
-}
-
-
-
-
-// Массив учеников, на каждого ученика свой лейбл со своим именем
-// 1 вьюха и чтоб на нее поместились более мелкие вьюхи циклом без пробелов
